@@ -1,0 +1,141 @@
+.error-message-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message-component.error {
+  background-color: #fed7d7;
+  border-left-color: #e53e3e;
+  color: #742a2a;
+}
+
+.error-message-component.warning {
+  background-color: #feebc8;
+  border-left-color: #dd6b20;
+  color: #7c2d12;
+}
+
+.error-message-component.info {
+  background-color: #bee3f8;
+  border-left-color: #3182ce;
+  color: #2c5282;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.error-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.error-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.error-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+}
+
+.btn-retry {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: inherit;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.btn-retry:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.btn-dismiss {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.btn-dismiss:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .error-message-component {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .error-content {
+    margin-bottom: 0.75rem;
+  }
+
+  .error-actions {
+    margin-left: 0;
+    justify-content: flex-end;
+  }
+
+  .btn-retry {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-message-component {
+    padding: 0.875rem;
+  }
+
+  .error-icon {
+    font-size: 1.1rem;
+  }
+
+  .error-text {
+    font-size: 0.875rem;
+  }
+
+  .btn-retry {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+  }
+}

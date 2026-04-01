@@ -1,0 +1,1048 @@
+/* ============================================
+   RIDE CARD - PREMIUM SAAS UI DESIGN
+   ============================================ */
+
+/* Base Card Styles */
+.ridecard-premium {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(0, 0, 0, 0.04);
+  isolation: isolate;
+}
+
+.ridecard-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02) 0%, rgba(118, 75, 162, 0.02) 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 0;
+}
+
+.ridecard-premium:hover::before {
+  opacity: 1;
+}
+
+.ridecard-premium:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 
+    0 20px 60px rgba(102, 126, 234, 0.15),
+    0 0 0 1px rgba(102, 126, 234, 0.1);
+}
+
+/* Animated Border Gradient */
+.ridecard-border-gradient {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #667eea);
+  background-size: 300% 300%;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: -1;
+  animation: ridecard-gradient-shift 6s ease infinite;
+}
+
+@keyframes ridecard-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.ridecard-premium:hover .ridecard-border-gradient {
+  opacity: 1;
+}
+
+/* Hover Glow Effect */
+.ridecard-glow {
+  position: absolute;
+  inset: -100px;
+  background: radial-gradient(circle at center, rgba(102, 126, 234, 0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ridecard-premium:hover .ridecard-glow {
+  opacity: 1;
+}
+
+/* Content Container */
+.ridecard-content {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 1;
+  background: white;
+  border-radius: 20px;
+}
+
+/* ============================================
+   BADGES SECTION
+   ============================================ */
+
+.ridecard-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ridecard-time-badge,
+.ridecard-seats-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: ridecard-badge-appear 0.5s ease-out;
+}
+
+@keyframes ridecard-badge-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ridecard-time-badge {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #1e40af;
+}
+
+.ridecard-urgency-urgent {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15));
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #991b1b;
+  animation: ridecard-pulse-urgent 2s ease-in-out infinite;
+}
+
+@keyframes ridecard-pulse-urgent {
+  0%, 100% {
+    box-shadow: 0 2px 12px rgba(239, 68, 68, 0.2);
+  }
+  50% {
+    box-shadow: 0 2px 20px rgba(239, 68, 68, 0.4);
+  }
+}
+
+.ridecard-urgency-soon {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.15));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #92400e;
+}
+
+.ridecard-seats-badge {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #065f46;
+}
+
+.ridecard-badge-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ridecard-badge-text {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================
+   ROUTE SECTION
+   ============================================ */
+
+.ridecard-route {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s;
+}
+
+.ridecard-premium:hover .ridecard-route {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-color: #bfdbfe;
+}
+
+.ridecard-location {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ridecard-location-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.ridecard-location-from .ridecard-location-icon-wrapper {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.ridecard-location-to .ridecard-location-icon-wrapper {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.ridecard-premium:hover .ridecard-location-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.ridecard-location-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ridecard-location-from .ridecard-location-icon {
+  color: #2563eb;
+}
+
+.ridecard-location-to .ridecard-location-icon {
+  color: #059669;
+}
+
+.ridecard-location-details {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ridecard-location-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.ridecard-location-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Route Line */
+.ridecard-route-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.ridecard-route-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.ridecard-dot {
+  width: 4px;
+  height: 4px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  animation: ridecard-dot-pulse 1.5s ease-in-out infinite;
+}
+
+.ridecard-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ridecard-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes ridecard-dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.ridecard-route-arrow {
+  width: 24px;
+  height: 24px;
+  color: #667eea;
+  transition: transform 0.3s;
+}
+
+.ridecard-premium:hover .ridecard-route-arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   INFO PILLS
+   ============================================ */
+
+.ridecard-info-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ridecard-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ridecard-premium:hover .ridecard-pill {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.ridecard-pill-icon {
+  width: 14px;
+  height: 14px;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.ridecard-pill-text {
+  white-space: nowrap;
+}
+
+/* ============================================
+   DRIVER SECTION
+   ============================================ */
+
+.ridecard-driver {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1px solid #bbf7d0;
+  border-radius: 14px;
+  transition: all 0.3s;
+}
+
+.ridecard-premium:hover .ridecard-driver {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  border-color: #86efac;
+}
+
+.ridecard-driver-avatar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ridecard-avatar-inner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  border: 3px solid white;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s;
+}
+
+.ridecard-premium:hover .ridecard-avatar-inner {
+  transform: scale(1.1);
+}
+
+.ridecard-avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  opacity: 0.2;
+  z-index: 1;
+  animation: ridecard-ring-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ridecard-ring-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+}
+
+.ridecard-driver-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ridecard-driver-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ridecard-driver-college {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #059669;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ridecard-college-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.ridecard-driver-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #fbbf24;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400e;
+  flex-shrink: 0;
+}
+
+.ridecard-rating-icon {
+  width: 14px;
+  height: 14px;
+  color: #fbbf24;
+}
+
+/* ============================================
+   FOOTER SECTION
+   ============================================ */
+
+.ridecard-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 14px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.ridecard-price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ridecard-price-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+}
+
+.ridecard-price-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.ridecard-price-currency {
+  font-size: 18px;
+  font-weight: 800;
+  color: #667eea;
+  line-height: 1;
+}
+
+.ridecard-price-amount {
+  font-size: 28px;
+  font-weight: 900;
+  color: #667eea;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* CTA Button */
+.ridecard-cta-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 8px 24px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.ridecard-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: -1;
+}
+
+.ridecard-cta-btn:hover::before {
+  opacity: 1;
+}
+
+.ridecard-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 32px rgba(102, 126, 234, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.ridecard-cta-btn:active {
+  transform: translateY(0);
+}
+
+.ridecard-cta-text {
+  position: relative;
+  z-index: 1;
+}
+
+.ridecard-cta-icon {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.ridecard-cta-btn:hover .ridecard-cta-icon {
+  transform: translateX(4px);
+}
+
+/* Shine Effect */
+.ridecard-cta-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ridecard-cta-btn:hover .ridecard-cta-shine {
+  left: 100%;
+}
+
+/* ============================================
+   LIST VIEW MODE
+   ============================================ */
+
+.ridecard-list-mode {
+  border-radius: 20px;
+}
+
+.ridecard-list-mode .ridecard-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr auto;
+  grid-template-areas:
+    "route info cta"
+    "driver info cta";
+  gap: 24px;
+  align-items: center;
+  padding: 24px 28px;
+}
+
+.ridecard-list-mode .ridecard-badges {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+}
+
+.ridecard-list-mode .ridecard-route {
+  grid-area: route;
+  padding: 16px;
+}
+
+.ridecard-list-mode .ridecard-driver {
+  grid-area: driver;
+  padding: 12px 16px;
+}
+
+.ridecard-list-mode .ridecard-info-pills {
+  grid-area: info;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ridecard-list-mode .ridecard-pill {
+  justify-content: flex-start;
+}
+
+.ridecard-list-mode .ridecard-footer {
+  grid-area: cta;
+  flex-direction: column;
+  align-items: flex-end;
+  border-top: none;
+  padding-top: 0;
+  gap: 16px;
+}
+
+.ridecard-list-mode .ridecard-price-section {
+  align-items: flex-end;
+}
+
+.ridecard-list-mode .ridecard-cta-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .ridecard-list-mode .ridecard-content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "route info"
+      "driver cta";
+  }
+}
+
+@media (max-width: 1024px) {
+  .ridecard-list-mode .ridecard-content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "route"
+      "info"
+      "driver"
+      "cta";
+  }
+
+  .ridecard-list-mode .ridecard-info-pills {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .ridecard-list-mode .ridecard-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 20px;
+  }
+
+  .ridecard-list-mode .ridecard-price-section {
+    align-items: flex-start;
+  }
+
+  .ridecard-list-mode .ridecard-cta-btn {
+    width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .ridecard-premium {
+    border-radius: 20px;
+  }
+
+  .ridecard-content {
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .ridecard-route {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .ridecard-location {
+    width: 100%;
+  }
+
+  .ridecard-route-line {
+    transform: rotate(90deg);
+    margin: 8px 0;
+  }
+
+  .ridecard-info-pills {
+    flex-direction: column;
+  }
+
+  .ridecard-pill {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .ridecard-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .ridecard-price-section {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ridecard-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .ridecard-content {
+    padding: 20px;
+    gap: 18px;
+  }
+
+  .ridecard-badges {
+    gap: 6px;
+  }
+
+  .ridecard-time-badge,
+  .ridecard-seats-badge {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .ridecard-badge-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ridecard-route {
+    padding: 14px;
+  }
+
+  .ridecard-location-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ridecard-location-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ridecard-location-label {
+    font-size: 10px;
+  }
+
+  .ridecard-location-name {
+    font-size: 14px;
+  }
+
+  .ridecard-route-arrow {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ridecard-pill {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .ridecard-pill-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ridecard-driver {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .ridecard-avatar-inner {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .ridecard-driver-name {
+    font-size: 14px;
+  }
+
+  .ridecard-driver-college {
+    font-size: 12px;
+  }
+
+  .ridecard-college-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .ridecard-driver-rating {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .ridecard-rating-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .ridecard-footer {
+    padding-top: 18px;
+  }
+
+  .ridecard-price-label {
+    font-size: 10px;
+  }
+
+  .ridecard-price-currency {
+    font-size: 18px;
+  }
+
+  .ridecard-price-amount {
+    font-size: 28px;
+  }
+
+  .ridecard-cta-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+
+  .ridecard-cta-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ridecard-content {
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .ridecard-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ridecard-route {
+    padding: 12px;
+  }
+
+  .ridecard-location-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ridecard-location-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ridecard-location-name {
+    font-size: 13px;
+  }
+
+  .ridecard-driver {
+    padding: 12px;
+  }
+
+  .ridecard-avatar-inner {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .ridecard-price-currency {
+    font-size: 16px;
+  }
+
+  .ridecard-price-amount {
+    font-size: 24px;
+  }
+
+  .ridecard-cta-btn {
+    padding: 11px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & INTERACTIONS
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .ridecard-premium,
+  .ridecard-border-gradient,
+  .ridecard-glow,
+  .ridecard-time-badge,
+  .ridecard-seats-badge,
+  .ridecard-location-icon-wrapper,
+  .ridecard-route-arrow,
+  .ridecard-dot,
+  .ridecard-avatar-inner,
+  .ridecard-avatar-ring,
+  .ridecard-cta-btn,
+  .ridecard-cta-icon,
+  .ridecard-cta-shine {
+    animation: none;
+    transition: none;
+  }
+
+  .ridecard-premium:hover {
+    transform: none;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.ridecard-premium:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 4px;
+}
+
+.ridecard-cta-btn:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .ridecard-premium {
+    border: 2px solid currentColor;
+  }
+
+  .ridecard-time-badge,
+  .ridecard-seats-badge,
+  .ridecard-pill,
+  .ridecard-driver {
+    border-width: 2px;
+  }
+
+  .ridecard-cta-btn {
+    border: 2px solid white;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .ridecard-premium {
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+    page-break-inside: avoid;
+  }
+
+  .ridecard-border-gradient,
+  .ridecard-glow,
+  .ridecard-cta-shine {
+    display: none;
+  }
+
+  .ridecard-cta-btn {
+    background: #667eea;
+    box-shadow: none;
+  }
+
+  .ridecard-premium:hover {
+    transform: none;
+  }
+}
+
+/* Loading State (Optional) */
+.ridecard-premium.ridecard-loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.ridecard-premium.ridecard-loading .ridecard-content {
+  animation: ridecard-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes ridecard-skeleton-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Disabled State */
+.ridecard-premium.ridecard-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(1);
+}
+
+.ridecard-premium.ridecard-disabled .ridecard-cta-btn {
+  background: #94a3b8;
+  cursor: not-allowed;
+}

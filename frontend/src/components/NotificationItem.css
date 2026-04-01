@@ -1,0 +1,137 @@
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.notification-item:hover {
+  background-color: #f9f9f9;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-item.unread {
+  background-color: #f0f7ff;
+}
+
+.notification-item.unread::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: #4a90e2;
+}
+
+.notification-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.notification-icon.booking {
+  background-color: #4a90e2;
+}
+
+.notification-icon.cancellation {
+  background-color: #e74c3c;
+}
+
+.notification-icon.message {
+  background-color: #9b59b6;
+}
+
+.notification-icon.ride {
+  background-color: #27ae60;
+}
+
+.notification-icon.success {
+  background-color: #2ecc71;
+}
+
+.notification-icon.error {
+  background-color: #e74c3c;
+}
+
+.notification-icon.info {
+  background-color: #3498db;
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-message {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #999;
+}
+
+.notification-remove {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  color: #999;
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.notification-item:hover .notification-remove {
+  opacity: 1;
+}
+
+.notification-remove:hover {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.notification-remove:focus {
+  opacity: 1;
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .notification-item {
+    padding: 12px;
+  }
+
+  .notification-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .notification-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .notification-remove {
+    opacity: 1;
+  }
+}
