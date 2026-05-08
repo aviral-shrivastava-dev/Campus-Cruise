@@ -41,12 +41,7 @@ campus-cruise/
 │   ├── vite.config.js     # Vite configuration
 │   └── package.json       # Frontend dependencies
 │
-└── .kiro/specs/           # Feature specifications
-    └── campus-cruise/
-        ├── requirements.md # Requirements document
-        ├── design.md      # Design document
-        └── tasks.md       # Implementation tasks
-```
+└──
 
 ## Prerequisites
 
