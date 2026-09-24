@@ -1,6 +1,6 @@
 # Campus Cruise
 
-Community-driven carpooling platform for college students to facilitate ride-sharing within campus and surrounding communities.
+Community-driven carpooling platform for college students to facilitate ride-sharing to and from campus and surrounding communities.
 
 ## Project Structure
 
